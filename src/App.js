@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { GlobalStyles } from "./style/global.style";
-import { Header } from "./style/header.style";
+import { HeaderStyled } from "./style/header.style";
 import { Footer } from "./style/footer.style";
 import { ThemeProvider } from "styled-components";
-import { light, dark, blue } from "./style/theme.style";
-import { ThemeContainer, ThemeButton } from "./style/themeSwitching.style";
+import { light } from "./style/theme.style";
 import Home from "./views/Home";
 import { Routes, Route } from "react-router-dom";
 import Detail from "./views/Detail";
@@ -15,24 +14,10 @@ function App() {
     <ThemeProvider theme={selectedTheme}>
       <GlobalStyles />
 
-      <Header>
-        <p>Cat Facts</p>
-        <ThemeContainer>
-          <span>Themes: </span>
-          <ThemeButton
-            className={`light ${selectedTheme === light ? "active" : ""}`}
-            onClick={() => setSelectedTheme(light)}
-          ></ThemeButton>
-          <ThemeButton
-            className={`dark ${selectedTheme === dark ? "active" : ""}`}
-            onClick={() => setSelectedTheme(dark)}
-          ></ThemeButton>
-          <ThemeButton
-            className="blue"
-            onClick={() => setSelectedTheme(blue)}
-          ></ThemeButton>
-        </ThemeContainer>
-      </Header>
+      <HeaderStyled
+        selectedTheme={selectedTheme}
+        setSelectedTheme={setSelectedTheme}
+      />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/catfacts" element={<Detail />} />

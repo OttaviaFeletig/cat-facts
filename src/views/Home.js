@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-// import Card from "../components/Card";
 import { CardContainer, CardStyled } from "../style/card.style";
-import { ThemeContainer } from "../style/themeSwitching.style";
 
 const Home = () => {
   const [cats, setCats] = useState(null);
@@ -26,7 +24,12 @@ const Home = () => {
       {cats &&
         cats.map((cat, index) => (
           <Link to={"catfacts"} state={{ cat, index }} key={index}>
-            <CardStyled data={cat} index={index} imgDim={200} />
+            <CardStyled
+              data={cat}
+              index={index}
+              imgDim={200}
+              placeholderDim={100}
+            />
           </Link>
         ))}
     </CardContainer>

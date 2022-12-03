@@ -4,17 +4,19 @@ import Container from "../components/Container";
 
 const CardContainer = styled(Container)`
   width: 100vw;
-  display: flex;
+  display: inline-flex;
   flex-wrap: wrap;
+  gap: 10px;
   justify-content: center;
+  margin: 20px 0 20px 0;
 `;
 
 const CardStyled = styled(Card)`
   width: 200px;
+  height: 100%;
   background-color: ${({ theme }) => theme.colors.cardBgc};
   border: ${({ theme }) => theme.colors.border};
   border-radius: ${({ theme }) => theme.colors.borderRadius};
-  margin: 10px;
   & p {
     color: ${({ theme }) => theme.colors.cardTitle};
     margin-top: 20px;
@@ -27,6 +29,7 @@ const CardStyled = styled(Card)`
 
 const CardFull = styled(Card)`
   width: 500px;
+  height: 100%;
   background-color: ${({ theme }) => theme.colors.cardBgc};
   border: ${({ theme }) => theme.colors.border};
   border-radius: ${({ theme }) => theme.colors.borderRadius};
