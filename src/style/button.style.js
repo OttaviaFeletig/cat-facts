@@ -1,8 +1,12 @@
 import styled from "styled-components";
 import Button from "../components/Button";
 
-const CardButton = styled(Button)`
-  color: ${({ theme }) => theme.colors.background};
+const MenuButton = styled(Button)`
+  background-color: ${({ theme }) => theme.colors.background};
+  width: 60px;    
+  height: 60px;    
+  z-index: 100;
+  }
 `;
 
-export { CardButton };
+export { MenuButton };

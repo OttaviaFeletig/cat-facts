@@ -5,7 +5,7 @@ export const light = {
     background: "hsl(0, 0%, 100%)",
     footer: "hsl(0, 0%, 93%)",
     text: "black",
-    cardBgc: "hsl(60, 40%, 100%)",
+    cardBgc: "hsl(0, 0%, 75%)",
     cardTitle: "hsl(0, 1%, 38%)",
     border: "solid hsl(0, 0%, 87%)",
     borderRadius: "5px",

@@ -1,11 +1,22 @@
 import styled from "styled-components";
+import Container from "../components/Container";
 import Header from "../components/Header";
+export const HeaderMenuContainer = styled(Container)`
+  display: flex;
+  width: 100%;
+  margin: 20px;
+  // margin-left: 20px;
+  // z-index: 5;
+  // justify-content: space-around;
+`;
 export const HeaderStyled = styled(Header)`
-  background-color: ${({ theme }) => theme.colors.header};
   padding: 20px;
   text-align: center;
   font-weight: bold;
-  & p {
-    color: ${({ theme }) => theme.colors.text};
-  }
+  // padding: 10px;
+  // z-index: 5;
+
+  // & p {
+  //   color: ${({ theme }) => theme.colors.text};
+  // }
 `;

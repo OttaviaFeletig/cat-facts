@@ -10,10 +10,6 @@ export const GlobalStyles = createGlobalStyle`
   padding: 0;
   box-sizing: border-box;
 }
-// @font-face {
-//  font-family: 'oswald';
-//  src: url(FONT_FILE_NAME.woff2) format('woff2');
-// }
 body {
   background-color: ${({ theme }) => theme.colors.background};
   color: ${({ theme }) => theme.colors.text};
