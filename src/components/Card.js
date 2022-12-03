@@ -15,7 +15,7 @@ const Card = ({ className, data, index, placeholderDim, imgDim }) => {
 
   return (
     <div className={className}>
-      <ProgressiveImg placeholderSrc={image} width={imgDim} height={imgDim} />
+      <ProgressiveImg src={image} width={imgDim} height={imgDim} fact={fact} />
       {/* <img
         width="100%"
         src={`https://placekitten.com/${imgDim}/${imgDim}?image=${index + 1}`}

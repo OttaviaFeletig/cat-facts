@@ -1,10 +1,4 @@
-const ProgressiveImg = ({ placeholderSrc, src, ...props }) => {
-  return (
-    <img
-      {...{ src: placeholderSrc, ...props }}
-      alt={props.alt || ""}
-      className="image"
-    />
-  );
+const ProgressiveImg = ({ src, fact, width, height }) => {
+  return <img src={src} alt={fact || ""} width={width} height={height} />;
 };
 export default ProgressiveImg;
