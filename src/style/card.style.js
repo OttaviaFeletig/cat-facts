@@ -8,7 +8,7 @@ const CardContainer = styled(Container)`
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
-  margin: 20px 0 20px 0;
+  margin: 90px 0 20px 0;
 `;
 
 const CardStyled = styled(Card)`

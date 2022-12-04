@@ -1,10 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Loader from "../components/Loader";
 import NextPrevPage from "../components/NextPrevPage";
 import { CardContainer, CardStyled } from "../style/card.style";
 
 const Home = () => {
-  // const [cats, setCats] = useState(null);
   const [data, setData] = useState(null);
   const [url, setUrl] = useState(
     "https://catfact.ninja/facts?limit=16&max_length=140"
@@ -17,8 +17,6 @@ const Home = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log("data", data);
-        // setCats(data.data);
         setData(data);
       })
       .catch((err) => console.log(err));
@@ -30,9 +28,10 @@ const Home = () => {
   const changePage = (page) => {
     setUrl(page);
   };
+
   return (
-    <>
-      {data && (
+    <div style={{ minHeight: "100vh" }}>
+      {data ? (
         <>
           <CardContainer>
             {data.data &&
@@ -54,8 +53,10 @@ const Home = () => {
             nextPage={data.next_page_url}
           />
         </>
+      ) : (
+        <Loader />
       )}
-    </>
+    </div>
   );
 };
 

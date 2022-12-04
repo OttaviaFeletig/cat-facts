@@ -1,5 +1,5 @@
 import React from "react";
-import { useSpring, animated, config } from "react-spring";
+import { animated } from "react-spring";
 
 const AnimatedDiv = ({
   elementStyle,
@@ -7,7 +7,6 @@ const AnimatedDiv = ({
   children,
   className,
   handleClick,
-  isOpen,
 }) => {
   return (
     <animated.div

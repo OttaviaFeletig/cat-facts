@@ -1,5 +1,5 @@
 import React from "react";
-import { useSpring, animated, config } from "react-spring";
+import { animated } from "react-spring";
 import { useTheme } from "styled-components";
 
 const AnimatedRect = ({

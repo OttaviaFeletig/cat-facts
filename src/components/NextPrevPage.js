@@ -5,9 +5,6 @@ import { PaginationStyled } from "../style/pagination";
 import { Previous, Next } from "../style/icons.style";
 import { H2 } from "../style/text.style";
 const NextPrevPage = ({ prevPage, nextPage, changePage, currentPage }) => {
-  const handleClick = (page) => {
-    changePage(page);
-  };
   return (
     <PaginationStyled>
       <button

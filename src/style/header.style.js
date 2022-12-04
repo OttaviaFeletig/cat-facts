@@ -6,6 +6,7 @@ export const HeaderMenuContainer = styled(Container)`
   width: 100%;
   margin: 20px;
   align-items: center;
+  position: fixed;
   // margin-left: 20px;
   // z-index: 5;
   // justify-content: space-around;

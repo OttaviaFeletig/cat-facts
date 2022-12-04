@@ -9,18 +9,17 @@ import {
   fadeInStyles,
   fadeOutStyles,
   first,
-  rotateStyles,
   second,
   third,
 } from "../style/animations";
 import { H2 } from "../style/text.style";
+import { Link, useLocation } from "react-router-dom";
 
-const Header = ({ selectedTheme, setSelectedTheme, handleClick }) => {
+const Header = ({ selectedTheme, setSelectedTheme }) => {
   const [isOpen, toggle] = useState(false);
-
+  const location = useLocation();
   const buttonFadeIn = useSpring(fadeInStyles);
   const buttonFadeOut = useSpring(fadeOutStyles);
-  // const rotate = useSpring(rotateStyles(isOpen));
   const handleToggle = () => {
     toggle(!isOpen);
   };
@@ -83,7 +82,15 @@ const Header = ({ selectedTheme, setSelectedTheme, handleClick }) => {
         </>
       ) : (
         <div style={{ display: "flex", alignItems: "center", marginLeft: 25 }}>
-          <h1>Cat facts.</h1>
+          <Link
+            to={
+              location.pathname === "/catfacts"
+                ? "/"
+                : window.scroll({ top: 0, behavior: "smooth" })
+            }
+          >
+            <h1>Cat facts.</h1>
+          </Link>
         </div>
       )}
     </HeaderMenuContainer>
