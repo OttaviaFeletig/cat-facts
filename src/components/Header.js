@@ -1,77 +1,60 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { ThemeButton, ThemeContainer } from "../style/themeSwitching.style";
 import { light, dark, blue } from "../style/theme.style";
 import { MenuButton } from "../style/button.style";
-import Container from "./Container";
 import { HeaderMenuContainer } from "../style/header.style";
-import { useSpring, animated, config } from "react-spring";
-import { useTheme } from "styled-components";
+import { useSpring } from "react-spring";
+import AnimatedDiv from "./AnimatedDiv";
+import { fadeInStyles, fadeOutStyles, rotateStyles } from "../style/animations";
+import { H2 } from "../style/text.style";
 
-const Header = ({ selectedTheme, setSelectedTheme }) => {
+const Header = ({ selectedTheme, setSelectedTheme, handleClick }) => {
   const [isOpen, toggle] = useState(false);
-  const theme = useTheme();
 
-  const styles = useSpring({
-    from: { width: isOpen ? "100%" : 0 },
-    to: { width: isOpen ? "100%" : 0 },
-  });
-  const fadeInStyles = useSpring({
-    config: { mass: 1, tension: 70, friction: 15 },
-    from: { opacity: 0 },
-    to: {
-      opacity: 1,
-      // width: isOpen ? "100%" : "0",
-      // marginLeft: 40,
-      // background: `${theme.colors.header}`,
-    },
-  });
-  const fadeOutStyles = useSpring({
-    config: { mass: 1, tension: 70, friction: 15 },
-
-    from: { opacity: 1 },
-    to: {
-      opacity: 0,
-    },
-  });
-
+  const buttonFadeIn = useSpring(fadeInStyles);
+  const buttonFadeOut = useSpring(fadeOutStyles);
+  const rotate = useSpring(rotateStyles(isOpen));
+  const handleToggle = () => {
+    toggle(!isOpen);
+  };
+  // handleClick={handleClick}
+  //     isOpen={isOpen}
+  //     className={className}
+  //     style={{
+  //       width: "100%",
+  //       height: "100%",
+  //     }}
+  //     animation={rotate}
   return (
-    // <>
     <HeaderMenuContainer>
-      <MenuButton isOpen={isOpen} toggle={toggle} />
-      {/* <h1>Cat facts</h1> */}
+      <MenuButton
+        isOpen={isOpen}
+        handleClick={handleToggle}
+        animation={rotate}
+      />
       {isOpen ? (
-        <animated.div
-          style={{
-            opacity: 1,
-            display: "flex",
-            alignItems: "center",
-            marginLeft: 25,
-            ...fadeOutStyles,
-          }}
-        >
-          <h1>Cat facts.</h1>
-        </animated.div>
-      ) : (
-        <div style={{ display: "flex", alignItems: "center", marginLeft: 25 }}>
-          <h1>Cat facts.</h1>
-        </div>
-      )}
-      {isOpen && (
         <>
-          <animated.div
-            style={{
-              // width: "100%",
-              // height: 80,
-              // zIndex: 0,
+          <AnimatedDiv
+            elementStyle={{
+              opacity: 1,
+              display: "flex",
+              alignItems: "center",
+              marginLeft: 25,
+            }}
+            animation={buttonFadeOut}
+          >
+            <h1>Cat facts.</h1>
+          </AnimatedDiv>
+          <AnimatedDiv
+            elementStyle={{
+              width: "100%",
               display: "flex",
               alignItems: "center",
               position: "absolute",
-              // marginLeft: 80,
+              flexWrap: "wrap",
               height: 60,
-              // background: `${theme.colors.header}`,
-              // borderRadius: "5px",
-              ...fadeInStyles,
             }}
+            animation={buttonFadeIn}
           >
             <ThemeContainer>
               <ThemeButton
@@ -87,11 +70,14 @@ const Header = ({ selectedTheme, setSelectedTheme }) => {
                 onClick={() => setSelectedTheme(blue)}
               ></ThemeButton>
             </ThemeContainer>
-            <h2>Different themes for different tastes.</h2>
-          </animated.div>
+            <H2>Different themes for different tastes.</H2>
+          </AnimatedDiv>
         </>
+      ) : (
+        <div style={{ display: "flex", alignItems: "center", marginLeft: 25 }}>
+          <h1>Cat facts.</h1>
+        </div>
       )}
-      {/* </> */}
     </HeaderMenuContainer>
   );
 };

@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import Container from "../components/Container";
-
+import { device } from "./device";
 export const ThemeContainer = styled(Container)`
   // background-color: ${({ theme }) => theme.colors.header};
-  width: 100%;
+  // width: 100%;
   margin-left: 70px;
   display: flex;
   flex-wrap: wrap;
@@ -11,6 +11,9 @@ export const ThemeContainer = styled(Container)`
   align-items: center;
   padding: 10px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+  @media ${device.tablet} {
+    width: 15%;
+  }
 `;
 
 export const ThemeButton = styled.button`
