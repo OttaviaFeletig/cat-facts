@@ -25,12 +25,29 @@ const Header = ({ selectedTheme, setSelectedTheme, handleClick }) => {
   //       height: "100%",
   //     }}
   //     animation={rotate}
+  const first = useSpring({
+    transform: isOpen
+      ? "translate(5px, 32px) rotate(-45deg)"
+      : "translate(2px, 7px) rotate(0deg)",
+  });
+  const second = useSpring({
+    transform: isOpen
+      ? "translate(10px, 4px) rotate(45deg)"
+      : "translate(2px, 19px) rotate(0deg)",
+  });
+  const third = useSpring({
+    transform: isOpen
+      ? "translate(5px, 32px) rotate(-45deg)"
+      : "translate(2px, 31px) rotate(0deg)",
+  });
   return (
     <HeaderMenuContainer>
       <MenuButton
         isOpen={isOpen}
         handleClick={handleToggle}
-        animation={rotate}
+        first={first}
+        second={second}
+        third={third}
       />
       {isOpen ? (
         <>
