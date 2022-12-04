@@ -5,6 +5,7 @@ export const HeaderMenuContainer = styled(Container)`
   display: flex;
   width: 100%;
   margin: 20px;
+  align-items: center;
   // margin-left: 20px;
   // z-index: 5;
   // justify-content: space-around;

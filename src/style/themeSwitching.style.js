@@ -4,7 +4,7 @@ import { device } from "./device";
 export const ThemeContainer = styled(Container)`
   // background-color: ${({ theme }) => theme.colors.header};
   // width: 100%;
-  margin-left: 70px;
+  margin-left: 45px;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;

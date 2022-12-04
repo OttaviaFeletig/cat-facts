@@ -5,7 +5,14 @@ import { MenuButton } from "../style/button.style";
 import { HeaderMenuContainer } from "../style/header.style";
 import { useSpring } from "react-spring";
 import AnimatedDiv from "./AnimatedDiv";
-import { fadeInStyles, fadeOutStyles, rotateStyles } from "../style/animations";
+import {
+  fadeInStyles,
+  fadeOutStyles,
+  first,
+  rotateStyles,
+  second,
+  third,
+} from "../style/animations";
 import { H2 } from "../style/text.style";
 
 const Header = ({ selectedTheme, setSelectedTheme, handleClick }) => {
@@ -13,41 +20,25 @@ const Header = ({ selectedTheme, setSelectedTheme, handleClick }) => {
 
   const buttonFadeIn = useSpring(fadeInStyles);
   const buttonFadeOut = useSpring(fadeOutStyles);
-  const rotate = useSpring(rotateStyles(isOpen));
+  // const rotate = useSpring(rotateStyles(isOpen));
   const handleToggle = () => {
     toggle(!isOpen);
   };
-  // handleClick={handleClick}
-  //     isOpen={isOpen}
-  //     className={className}
-  //     style={{
-  //       width: "100%",
-  //       height: "100%",
-  //     }}
-  //     animation={rotate}
-  const first = useSpring({
-    transform: isOpen
-      ? "translate(5px, 32px) rotate(-45deg)"
-      : "translate(2px, 7px) rotate(0deg)",
-  });
-  const second = useSpring({
-    transform: isOpen
-      ? "translate(10px, 4px) rotate(45deg)"
-      : "translate(2px, 19px) rotate(0deg)",
-  });
-  const third = useSpring({
-    transform: isOpen
-      ? "translate(5px, 32px) rotate(-45deg)"
-      : "translate(2px, 31px) rotate(0deg)",
-  });
+  const menuAnimation = [
+    useSpring(first(isOpen)),
+    useSpring(second(isOpen)),
+    useSpring(third(isOpen)),
+  ];
+
   return (
     <HeaderMenuContainer>
       <MenuButton
-        isOpen={isOpen}
         handleClick={handleToggle}
-        first={first}
-        second={second}
-        third={third}
+        n={3}
+        width={"40"}
+        height={"4"}
+        rx={"2"}
+        animations={menuAnimation}
       />
       {isOpen ? (
         <>

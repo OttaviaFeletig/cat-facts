@@ -5,6 +5,7 @@ import Button from "../components/Button";
 
 const MenuButton = styled(AnimatedRect)`
   z-index: 100;
+  cursor: pointer;
 `;
 
 export { MenuButton };
