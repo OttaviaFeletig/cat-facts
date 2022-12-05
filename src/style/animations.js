@@ -1,17 +1,21 @@
-const fadeInStyles = {
-  config: { mass: 1, tension: 70, friction: 25 },
-  from: { opacity: 0 },
-  to: {
-    opacity: 1,
-  },
+const fadeInStyles = (isOpen) => {
+  return {
+    config: { mass: 1, tension: 70, friction: 25 },
+    from: { opacity: isOpen ? 0 : 1 },
+    to: {
+      opacity: isOpen ? 1 : 0,
+    },
+  };
 };
-const fadeOutStyles = {
-  config: { mass: 1, tension: 70, friction: 25 },
+const fadeOutStyles = (isOpen) => {
+  return {
+    config: { mass: 1, tension: 70, friction: 25 },
 
-  from: { opacity: 1 },
-  to: {
-    opacity: 0,
-  },
+    from: { opacity: isOpen ? 1 : 1 },
+    to: {
+      opacity: isOpen ? 0 : 1,
+    },
+  };
 };
 
 const rotateStyles = (isOpen) => {

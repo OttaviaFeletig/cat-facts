@@ -3,13 +3,29 @@ import { Link } from "react-router-dom";
 import Loader from "../components/Loader";
 import NextPrevPage from "../components/NextPrevPage";
 import { CardContainer, CardStyled } from "../style/card.style";
+import { LoaderStyled } from "../style/loader.style";
 
 const Home = () => {
+  const generateRandNumbArray = () => {
+    const rands = [];
+    while (rands.length < 16) {
+      const r = Math.floor(Math.random() * 16);
+      if (!rands.includes(r + 1)) {
+        rands.push(r + 1);
+      }
+    }
+    console.log("rands", rands);
+    return rands;
+  };
+
   const [data, setData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   const [url, setUrl] = useState(
     "https://catfact.ninja/facts?limit=16&max_length=140"
   );
+  const [random, setRandom] = useState(null);
   useEffect(() => {
+    setIsLoading(true);
     const controller = new AbortController();
     const signal = controller.signal;
     fetch(`${url}&limit=16&max_length=140`, {
@@ -17,7 +33,12 @@ const Home = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log("data", data);
         setData(data);
+        setRandom(generateRandNumbArray);
+        setTimeout(() => {
+          setIsLoading(false);
+        }, "500");
       })
       .catch((err) => console.log(err));
 
@@ -31,15 +52,19 @@ const Home = () => {
 
   return (
     <div style={{ minHeight: "100vh" }}>
-      {data ? (
+      {!isLoading ? (
         <>
           <CardContainer>
-            {data.data &&
+            {data?.data &&
               data.data.map((cat, index) => (
-                <Link to={"catfacts"} state={{ cat, index }} key={index}>
+                <Link
+                  to={"catfacts"}
+                  state={{ cat, picN: random[index] }}
+                  key={index}
+                >
                   <CardStyled
+                    picN={random[index]}
                     data={cat}
-                    index={index}
                     imgDim={200}
                     placeholderDim={100}
                   />
@@ -48,13 +73,14 @@ const Home = () => {
           </CardContainer>
           <NextPrevPage
             currentPage={data.current_page}
+            lastPage={data.last_page}
             changePage={changePage}
             prevPage={data.prev_page_url}
             nextPage={data.next_page_url}
           />
         </>
       ) : (
-        <Loader />
+        <LoaderStyled />
       )}
     </div>
   );

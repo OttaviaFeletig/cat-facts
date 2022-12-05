@@ -2,18 +2,12 @@ import styled from "styled-components";
 import Container from "../components/Container";
 import { device } from "./device";
 export const ThemeContainer = styled(Container)`
-  // background-color: ${({ theme }) => theme.colors.header};
-  // width: 100%;
-  margin-left: 45px;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: row-reverse;
   justify-content: flex-start;
   align-items: center;
   padding: 10px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.border};
-  @media ${device.tablet} {
-    width: 15%;
-  }
 `;
 
 export const ThemeButton = styled.button`
@@ -22,8 +16,8 @@ export const ThemeButton = styled.button`
   font-size: 0.5rem;
   border-radius: 5px;
   border: none;
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
   cursor: pointer;
   &:hover {
     box-shadow: 2px 2px 2px ${({ theme }) => theme.colors.border};

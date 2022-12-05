@@ -3,8 +3,9 @@ import Container from "../components/Container";
 import Header from "../components/Header";
 export const HeaderMenuContainer = styled(Container)`
   display: flex;
+  flex-direction: row-reverse;
   width: 100%;
-  margin: 20px;
+  padding: 10px;
   align-items: center;
   position: fixed;
   // margin-left: 20px;

@@ -18,8 +18,8 @@ import { Link, useLocation } from "react-router-dom";
 const Header = ({ selectedTheme, setSelectedTheme }) => {
   const [isOpen, toggle] = useState(false);
   const location = useLocation();
-  const buttonFadeIn = useSpring(fadeInStyles);
-  const buttonFadeOut = useSpring(fadeOutStyles);
+  const buttonFadeIn = useSpring(fadeInStyles(isOpen));
+  const buttonFadeOut = useSpring(fadeOutStyles(isOpen));
   const handleToggle = () => {
     toggle(!isOpen);
   };
@@ -43,25 +43,15 @@ const Header = ({ selectedTheme, setSelectedTheme }) => {
         <>
           <AnimatedDiv
             elementStyle={{
-              opacity: 1,
-              display: "flex",
-              alignItems: "center",
-              marginLeft: 25,
-            }}
-            animation={buttonFadeOut}
-          >
-            <h1>Cat facts.</h1>
-          </AnimatedDiv>
-          <AnimatedDiv
-            elementStyle={{
               width: "100%",
               display: "flex",
               alignItems: "center",
               position: "absolute",
-              flexWrap: "wrap",
+              flexDirection: "row-reverse",
               height: 60,
+              marginRight: "80px",
             }}
-            animation={buttonFadeIn}
+            animation={{ ...buttonFadeIn, buttonFadeOut }}
           >
             <ThemeContainer>
               <ThemeButton
@@ -81,7 +71,15 @@ const Header = ({ selectedTheme, setSelectedTheme }) => {
           </AnimatedDiv>
         </>
       ) : (
-        <div style={{ display: "flex", alignItems: "center", marginLeft: 25 }}>
+        <AnimatedDiv
+          elementStyle={{
+            opacity: 1,
+            display: "flex",
+            alignItems: "center",
+            marginLeft: 25,
+          }}
+          animation={{ ...buttonFadeIn, ...buttonFadeOut }}
+        >
           <Link
             to={
               location.pathname === "/catfacts"
@@ -89,9 +87,9 @@ const Header = ({ selectedTheme, setSelectedTheme }) => {
                 : window.scroll({ top: 0, behavior: "smooth" })
             }
           >
-            <h1>Cat facts.</h1>
+            <h1>Cat facts</h1>
           </Link>
-        </div>
+        </AnimatedDiv>
       )}
     </HeaderMenuContainer>
   );

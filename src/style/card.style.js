@@ -1,20 +1,23 @@
 import styled from "styled-components";
 import Card from "../components/Card";
 import Container from "../components/Container";
+import { device } from "./device";
 
 const CardContainer = styled(Container)`
   width: 100vw;
+  min-height: calc(100vh - 190px);
   display: inline-flex;
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
+  align-items: center;
   margin: 90px 0 20px 0;
 `;
 
 const CardStyled = styled(Card)`
   width: 200px;
   height: 100%;
-  background-color: ${({ theme }) => theme.colors.cardBgc};
+  background: ${({ theme }) => theme.colors.cardBgc};
   border: ${({ theme }) => theme.colors.border};
   border-radius: ${({ theme }) => theme.colors.borderRadius};
   & p {
@@ -28,7 +31,7 @@ const CardStyled = styled(Card)`
 `;
 
 const CardFull = styled(Card)`
-  width: 500px;
+  width: 300px;
   height: 100%;
   background-color: ${({ theme }) => theme.colors.cardBgc};
   border: ${({ theme }) => theme.colors.border};
@@ -39,6 +42,9 @@ const CardFull = styled(Card)`
     white-space: initial;
     text-align: justify;
     padding: 5px;
+  }
+  @media ${device.mobileXL} {
+    width: 500px;
   }
 `;
 

@@ -1,18 +1,14 @@
 import React, { PureComponent } from "react";
 import { Spring, animated } from "react-spring";
+import { useTheme } from "styled-components";
 
 export class Loader extends PureComponent {
-  static style = ({ props }) => ({
-    border: "10px solid black",
-    borderRadius: "100%",
+  static animation = ({ props }) => ({
     height: props.diameter,
-    left: "50%",
+
     opacity: props.opacity,
-    position: "absolute",
-    top: "50%",
-    transform: "translateX(-50%) translateY(-50%)",
+
     width: props.diameter,
-    zIndex: 1,
   });
   handleRest = () => {
     this.forceUpdate();
@@ -26,8 +22,12 @@ export class Loader extends PureComponent {
         onRest={this.handleRest}
       >
         {(props) => {
-          console.log("props", props);
-          return <animated.div style={Loader.style({ props })} />;
+          return (
+            <animated.div
+              style={Loader.animation({ props })}
+              className={this.props.className}
+            />
+          );
         }}
       </Spring>
     );

@@ -15,7 +15,7 @@ body {
   color: ${({ theme }) => theme.colors.text};
   font-family: Oswald;
   & #root {
-    min-height: 100vh;
+    // min-height: 100vh;
     display:flex;
     flex-direction:column;
     justify-content: space-between;

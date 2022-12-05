@@ -30,7 +30,7 @@ const AnimatedRect = ({
       width={width}
       height={width}
       viewBox="0 0 44 44"
-      fill={theme.colors.cardBgc}
+      fill={theme.colors.text}
       xmlns="http://www.w3.org/2000/svg"
     >
       {rectangles}
