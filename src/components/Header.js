@@ -14,6 +14,7 @@ import {
 } from "../style/animations";
 import { H2 } from "../style/text.style";
 import { Link, useLocation } from "react-router-dom";
+import { GoBack } from "../style/icons.style";
 
 const Header = ({ selectedTheme, setSelectedTheme }) => {
   const [isOpen, toggle] = useState(false);
@@ -90,6 +91,11 @@ const Header = ({ selectedTheme, setSelectedTheme }) => {
             <h1>Cat facts</h1>
           </Link>
         </AnimatedDiv>
+      )}
+      {location.pathname === "/catfacts" && (
+        <Link to={"/"}>
+          <GoBack />
+        </Link>
       )}
     </HeaderMenuContainer>
   );
