@@ -8,14 +8,12 @@ export const GlobalStyles = createGlobalStyle`
 *::after {
   margin: 0;
   padding: 0;
-  // box-sizing: border-box;
 }
 body {
   background-color: ${({ theme }) => theme.colors.background};
   color: ${({ theme }) => theme.colors.text};
   font-family: Oswald;
   & #root {
-    // min-height: 100vh;
     display:flex;
     flex-direction:column;
     justify-content: space-between;
@@ -46,5 +44,8 @@ body {
     border: 3px ${({ theme }) => theme.colors.border};
 }
 
+.no-border {
+  border: none;
+}
 
 `;

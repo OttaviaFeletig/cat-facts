@@ -7,9 +7,11 @@ const AnimatedDiv = ({
   children,
   className,
   handleClick,
+  onScroll,
 }) => {
   return (
     <animated.div
+      scroll={onScroll}
       onClick={handleClick}
       className={className}
       style={{

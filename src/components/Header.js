@@ -1,11 +1,17 @@
 import React, { useState } from "react";
-import { ThemeButton, ThemeContainer } from "../style/themeSwitching.style";
+import {
+  ThemeButton,
+  ThemeButtonContainer,
+  ThemeContainer,
+  ThemeFlexCont,
+} from "../style/themeSwitching.style";
 import { light, dark, blue } from "../style/theme.style";
 import { MenuButton } from "../style/button.style";
 import { HeaderMenuContainer } from "../style/header.style";
 import { useSpring } from "react-spring";
 import AnimatedDiv from "./AnimatedDiv";
 import {
+  backgroundInOut,
   fadeInStyles,
   fadeOutStyles,
   first,
@@ -15,12 +21,16 @@ import {
 import { H2 } from "../style/text.style";
 import { Link, useLocation } from "react-router-dom";
 import { GoBack } from "../style/icons.style";
+import { device } from "../style/device";
+import { useTheme } from "styled-components";
 
-const Header = ({ selectedTheme, setSelectedTheme }) => {
+const Header = ({ selectedTheme, setSelectedTheme, scrollY }) => {
+  const theme = useTheme();
   const [isOpen, toggle] = useState(false);
   const location = useLocation();
   const buttonFadeIn = useSpring(fadeInStyles(isOpen));
   const buttonFadeOut = useSpring(fadeOutStyles(isOpen));
+
   const handleToggle = () => {
     toggle(!isOpen);
   };
@@ -29,9 +39,15 @@ const Header = ({ selectedTheme, setSelectedTheme }) => {
     useSpring(second(isOpen)),
     useSpring(third(isOpen)),
   ];
+  const backgroundAnimationInOut = useSpring(
+    backgroundInOut(scrollY, theme.colors.footer)
+  );
+  const scrollUp = () => {
+    window.scroll({ top: 0, behavior: "smooth" });
+  };
 
   return (
-    <HeaderMenuContainer>
+    <HeaderMenuContainer animation={{ ...backgroundAnimationInOut }}>
       <MenuButton
         handleClick={handleToggle}
         n={3}
@@ -42,34 +58,29 @@ const Header = ({ selectedTheme, setSelectedTheme }) => {
       />
       {isOpen ? (
         <>
-          <AnimatedDiv
-            elementStyle={{
-              width: "100%",
-              display: "flex",
-              alignItems: "center",
-              position: "absolute",
-              flexDirection: "row-reverse",
-              height: 60,
-              marginRight: "80px",
-            }}
-            animation={{ ...buttonFadeIn, buttonFadeOut }}
-          >
-            <ThemeContainer>
+          <ThemeContainer animation={{ ...buttonFadeIn }}>
+            <ThemeButtonContainer>
               <ThemeButton
-                className={`light ${selectedTheme === light ? "active" : ""}`}
+                className={`light ${
+                  selectedTheme === light ? "active" : "no-border"
+                }`}
                 onClick={() => setSelectedTheme(light)}
               ></ThemeButton>
               <ThemeButton
-                className={`dark ${selectedTheme === dark ? "active" : ""}`}
+                className={`dark ${
+                  selectedTheme === dark ? "active" : "no-border"
+                }`}
                 onClick={() => setSelectedTheme(dark)}
               ></ThemeButton>
               <ThemeButton
-                className={`blue ${selectedTheme === blue ? "active" : ""}`}
+                className={`blue ${
+                  selectedTheme === blue ? "active" : "no-border"
+                }`}
                 onClick={() => setSelectedTheme(blue)}
               ></ThemeButton>
-            </ThemeContainer>
+            </ThemeButtonContainer>
             <H2>Different themes for different tastes.</H2>
-          </AnimatedDiv>
+          </ThemeContainer>
         </>
       ) : (
         <AnimatedDiv
@@ -78,25 +89,20 @@ const Header = ({ selectedTheme, setSelectedTheme }) => {
             display: "flex",
             alignItems: "center",
             marginLeft: 25,
+            cursor: "pointer",
           }}
-          animation={{ ...buttonFadeIn, ...buttonFadeOut }}
+          animation={{ ...buttonFadeOut }}
         >
-          <Link
-            to={
-              location.pathname === "/catfacts"
-                ? "/"
-                : window.scroll({ top: 0, behavior: "smooth" })
-            }
-          >
-            <h1>Cat facts</h1>
-          </Link>
+          <h1 onClick={scrollUp}>Cat facts</h1>
         </AnimatedDiv>
       )}
-      {location.pathname === "/catfacts" && (
-        <Link to={"/"}>
-          <GoBack />
-        </Link>
-      )}
+      <div style={{ position: "absolute", left: "10px" }}>
+        {location.pathname === "/catfacts" && (
+          <Link to={"/"}>
+            <GoBack />
+          </Link>
+        )}
+      </div>
     </HeaderMenuContainer>
   );
 };

@@ -20,7 +20,7 @@ const NextPrevPage = ({
       <ChangePageButton
         onClick={() => changePage(prevPage)}
         disabled={prevPage === null}
-        cursor={prevPage !== null && "pointer"}
+        cursor={prevPage === null ? "auto" : "pointer"}
       >
         <Previous
           color={prevPage === null ? "rgba(0,0,0,0.2)" : theme.colors.text}
@@ -32,7 +32,7 @@ const NextPrevPage = ({
       <ChangePageButton
         onClick={() => changePage(nextPage)}
         disabled={nextPage === null}
-        cursor={nextPage !== null && "pointer"}
+        cursor={nextPage === null ? "auto" : "pointer"}
       >
         <Next
           color={nextPage === null ? "rgba(0,0,0,0.2)" : theme.colors.text}

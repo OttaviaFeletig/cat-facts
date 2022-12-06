@@ -47,21 +47,13 @@ const third = (isOpen) => {
   };
 };
 
-// const prevPage1 = (isOpen) => {
-//   return {
-//     transform: isOpen
-//       ? "translate(-12px, 32px) rotate(-45deg)"
-//       : "translate(-20px, 32px) rotate(-45deg)",
-//   };
-// };
+const backgroundInOut = (scrollY, color) => {
+  return {
+    // config: { mass: 1, tension: 70, friction: 15 },
 
-// const prevPage2 = (isOpen) => {
-//   return {
-//     transform: isOpen
-//       ? "translate(-10px, 10px) rotate(45deg)"
-//       : "translate(-17px, 10px) rotate(45deg)",
-//   };
-// };
+    to: { background: scrollY > 0 ? color : "transparent" },
+  };
+};
 
 export {
   fadeInStyles,
@@ -70,6 +62,5 @@ export {
   first,
   second,
   third,
-  // prevPage1,
-  // prevPage2,
+  backgroundInOut,
 };

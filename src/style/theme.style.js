@@ -1,13 +1,12 @@
 export const light = {
   name: "light-theme",
   colors: {
-    header: "hsl(0, 0%, 93%)",
-    background: "hsl(0, 0%, 100%)",
-    footer: "hsl(0, 0%, 93%)",
-    text: "black",
-    cardBgc: "linear-gradient(transparent, hsl(0, 0%, 75%))",
-    cardTitle: "hsl(0, 1%, 38%)",
-    border: "solid hsl(0, 0%, 87%)",
+    header: "#ededed",
+    background: " #F9F6F8",
+    footer: "#ededed",
+    text: "#131313",
+    cardBgc: "linear-gradient(transparent, #adadad)",
+    border: "solid #454545",
     borderRadius: "5px",
   },
 };
@@ -15,13 +14,12 @@ export const light = {
 export const dark = {
   name: "dark-theme",
   colors: {
-    header: "hsl(0, 0%, 20%)",
-    background: "hsl(0, 1%, 16%)",
-    footer: "hsl(0, 0%, 20%)",
-    text: "hsl(0, 0%, 100%)",
-    cardBgc: "hsl(0, 0%, 35%)",
-    cardTitle: "hsl(0, 0%, 100%)",
-    border: "solid hsl(0, 0%, 78%)",
+    header: "#454545",
+    background: "#131313",
+    footer: "#454545",
+    text: "#FFFFFF",
+    cardBgc: "linear-gradient(transparent, #454545)",
+    border: "solid #c0c0c0",
     borderRadius: "5px",
   },
 };
@@ -30,12 +28,11 @@ export const blue = {
   name: "blue-theme",
   colors: {
     header: "#37505C",
-    background: "#9AC9DF",
+    background: "#ADD8E6",
     footer: "#37505C",
     text: "white",
-    cardBgc: "#37505C",
-    cardTitle: "hsl(0, 0%, 100%)",
-    border: "solid hsl(0, 0%, 78%)",
+    cardBgc: "linear-gradient(transparent, #37505C)",
+    border: "solid #FFFFFF",
     borderRadius: "5px",
   },
 };

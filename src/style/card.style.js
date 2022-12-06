@@ -11,17 +11,16 @@ const CardContainer = styled(Container)`
   gap: 10px;
   justify-content: center;
   align-items: center;
-  margin: 90px 0 20px 0;
+  margin: 110px 0 20px 0;
 `;
 
 const CardStyled = styled(Card)`
   width: 200px;
   height: 100%;
   background: ${({ theme }) => theme.colors.cardBgc};
-  border: ${({ theme }) => theme.colors.border};
   border-radius: ${({ theme }) => theme.colors.borderRadius};
   & p {
-    color: ${({ theme }) => theme.colors.cardTitle};
+    color: ${({ theme }) => theme.colors.text};
     margin-top: 20px;
     overflow: hidden;
     white-space: nowrap;
@@ -33,12 +32,11 @@ const CardStyled = styled(Card)`
 const CardFull = styled(Card)`
   width: 300px;
   height: 100%;
-  background-color: ${({ theme }) => theme.colors.cardBgc};
-  border: ${({ theme }) => theme.colors.border};
+  background: ${({ theme }) => theme.colors.cardBgc};
   border-radius: ${({ theme }) => theme.colors.borderRadius};
   margin: 10px;
   & p {
-    margin-top: 20px;
+    margin-top: 50px;
     white-space: initial;
     text-align: justify;
     padding: 5px;

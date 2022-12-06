@@ -7,14 +7,30 @@ import { light } from "./style/theme.style";
 import Home from "./views/Home";
 import { Routes, Route } from "react-router-dom";
 import Detail from "./views/Detail";
+import { useEffect } from "react";
 function App() {
   const [selectedTheme, setSelectedTheme] = useState(light);
+  const [scrollY, setScrollY] = useState(0);
 
+  function logit() {
+    setScrollY(window.scrollY);
+  }
+
+  useEffect(() => {
+    function watchScroll() {
+      window.addEventListener("scroll", logit);
+    }
+    watchScroll();
+    return () => {
+      window.removeEventListener("scroll", logit);
+    };
+  });
   return (
     <ThemeProvider theme={selectedTheme}>
       <GlobalStyles />
 
       <HeaderStyled
+        scrollY={scrollY}
         selectedTheme={selectedTheme}
         setSelectedTheme={setSelectedTheme}
       />
