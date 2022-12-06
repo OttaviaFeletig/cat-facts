@@ -8,7 +8,7 @@ const CardContainer = styled(Container)`
   min-height: calc(100vh - 190px);
   display: inline-flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 15px;
   justify-content: center;
   align-items: center;
   margin: 110px 0 20px 0;
