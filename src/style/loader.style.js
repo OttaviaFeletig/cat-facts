@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Loader from "../components/Loader";
 
-export const LoaderStyled = styled(Loader)`
+const LoaderStyled = styled(Loader)`
   border: 10px solid ${({ theme }) => theme.colors.text};
   border-radius: 100%;
   left: 50%;
@@ -10,3 +10,4 @@ export const LoaderStyled = styled(Loader)`
   transform: translateX(-50%) translateY(-50%);
   z-index: 1;
 `;
+export { LoaderStyled };

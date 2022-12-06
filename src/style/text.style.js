@@ -1,9 +1,8 @@
 import styled from "styled-components";
 import { device } from "./device";
 
-export const H2 = styled.h2`
+const H2 = styled.h2`
   font-size: 1em;
-  //   margin-left: 80px;
 
   @media ${device.mobileL} {
     margin: 0px;
@@ -12,3 +11,4 @@ export const H2 = styled.h2`
     font-size: 1.5em;
   }
 `;
+export { H2 };

@@ -1,23 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Loader from "../components/Loader";
 import NextPrevPage from "../components/NextPrevPage";
 import { CardContainer, CardStyled } from "../style/card.style";
 import { LoaderStyled } from "../style/loader.style";
+import { generateRandNumbArray } from "../utils/randomNumber";
 
 const Home = () => {
-  const generateRandNumbArray = () => {
-    const rands = [];
-    while (rands.length < 16) {
-      const r = Math.floor(Math.random() * 16);
-      if (!rands.includes(r + 1)) {
-        rands.push(r + 1);
-      }
-    }
-    console.log("rands", rands);
-    return rands;
-  };
-
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [url, setUrl] = useState(
@@ -33,7 +21,6 @@ const Home = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log("data", data);
         setData(data);
         setRandom(generateRandNumbArray);
         setTimeout(() => {

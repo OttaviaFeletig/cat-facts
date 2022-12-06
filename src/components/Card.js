@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import useMediaQuery from "../hooks/useMediaQuery";
-import { device } from "../style/device";
 import ProgressiveImg from "./ProgressiveImage";
 
 const Card = ({ className, data, placeholderDim, imgDim, picN }) => {
@@ -27,7 +25,6 @@ const Card = ({ className, data, placeholderDim, imgDim, picN }) => {
           borderRadius: "5px",
         }}
       />
-
       <p>{fact}</p>
     </div>
   );

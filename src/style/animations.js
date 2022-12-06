@@ -49,8 +49,6 @@ const third = (isOpen) => {
 
 const backgroundInOut = (scrollY, color) => {
   return {
-    // config: { mass: 1, tension: 70, friction: 15 },
-
     to: { background: scrollY > 0 ? color : "transparent" },
   };
 };

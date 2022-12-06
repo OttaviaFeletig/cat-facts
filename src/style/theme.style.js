@@ -1,4 +1,4 @@
-export const light = {
+const light = {
   name: "light-theme",
   colors: {
     header: "#ededed",
@@ -11,7 +11,7 @@ export const light = {
   },
 };
 
-export const dark = {
+const dark = {
   name: "dark-theme",
   colors: {
     header: "#454545",
@@ -24,7 +24,7 @@ export const dark = {
   },
 };
 
-export const blue = {
+const blue = {
   name: "blue-theme",
   colors: {
     header: "#37505C",
@@ -36,3 +36,4 @@ export const blue = {
     borderRadius: "5px",
   },
 };
+export { light, dark, blue };

@@ -1,8 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
 import * as theme from "./theme.style";
-export const GlobalStyles = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css?family=Oswald');
+const GlobalStyles = createGlobalStyle`
 *,
 *::before,
 *::after {
@@ -27,7 +26,6 @@ body {
 
 }
 
-// theme buttons color
 .light {
   background-color: ${theme.light.colors.header};
 }
@@ -39,7 +37,6 @@ body {
 }
 
 
-// active theme
 .active{
     border: 3px ${({ theme }) => theme.colors.border};
 }
@@ -49,3 +46,5 @@ body {
 }
 
 `;
+
+export { GlobalStyles };

@@ -1,6 +1,5 @@
 import React, { PureComponent } from "react";
 import { Spring, animated } from "react-spring";
-import { useTheme } from "styled-components";
 
 export class Loader extends PureComponent {
   static animation = ({ props }) => ({

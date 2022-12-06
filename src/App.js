@@ -12,19 +12,16 @@ function App() {
   const [selectedTheme, setSelectedTheme] = useState(light);
   const [scrollY, setScrollY] = useState(0);
 
-  function logit() {
+  function setScrolling() {
     setScrollY(window.scrollY);
   }
 
   useEffect(() => {
-    function watchScroll() {
-      window.addEventListener("scroll", logit);
-    }
-    watchScroll();
+    window.addEventListener("scroll", setScrolling);
     return () => {
-      window.removeEventListener("scroll", logit);
+      window.removeEventListener("scroll", setScrolling);
     };
-  });
+  }, [scrollY]);
   return (
     <ThemeProvider theme={selectedTheme}>
       <GlobalStyles />

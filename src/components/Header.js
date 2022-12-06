@@ -3,7 +3,6 @@ import {
   ThemeButton,
   ThemeButtonContainer,
   ThemeContainer,
-  ThemeFlexCont,
 } from "../style/themeSwitching.style";
 import { light, dark, blue } from "../style/theme.style";
 import { MenuButton } from "../style/button.style";
@@ -21,7 +20,6 @@ import {
 import { H2 } from "../style/text.style";
 import { Link, useLocation } from "react-router-dom";
 import { GoBack } from "../style/icons.style";
-import { device } from "../style/device";
 import { useTheme } from "styled-components";
 
 const Header = ({ selectedTheme, setSelectedTheme, scrollY }) => {
